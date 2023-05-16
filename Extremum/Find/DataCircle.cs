@@ -93,7 +93,7 @@ public static class DataCircle
             return b;
         });
         double sqr = 2 * Math.PI * radius * radius;
-        if (sqrUP / sqr > 0.2 || sqrDOWN / sqr > 0.4) return (px, py, 0);
+        //if (sqrUP / sqr > 0.1 || sqrDOWN / sqr > 0.1) return (px, py, 0);
         return (center.x, center.y, radius);
     }
     private static ((int x, int y) a, (int x, int y) b) BetterR(int x, int y, double ox, double oy, bool[,] border)

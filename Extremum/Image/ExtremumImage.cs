@@ -157,7 +157,7 @@ public readonly struct ExtremumImage
         foreach (ElementData element in elements)
         {
             float value = element.weight / (float)maxWeight;
-            if (value < 0.05) continue;
+            if (value < 0.3) continue;
             yield return element;
         }
     }
