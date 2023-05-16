@@ -8,7 +8,6 @@ using SixLabors.ImageSharp.Drawing.Processing;
 using System.IO;
 using NanoAnalyzer.Extremum.Find.Better;
 using NanoAnalyzer.Extremum.Find;
-using System.Diagnostics;
 
 namespace NanoAnalyzer.Extremum.Image;
 
