@@ -9,8 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace NanoAnalyzer.UI
-{
+namespace NanoAnalyzer.UI;
+
     public partial class MainForm : Form
     {
         private (Image<Rgba32> src, ExtremumImage extremum)? image = null;
