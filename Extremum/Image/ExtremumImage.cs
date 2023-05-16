@@ -161,13 +161,16 @@ public readonly struct ExtremumImage
             yield return element;
         }
     }
-    public IEnumerable<ElementData> ExtractElementsWithDraw(Image<Rgba32> selected, Pen pen, int pointCount, Action<Frame>? progress)
+    public IEnumerable<ElementData> ExtractElementsWithDraw(Image<Rgba32> selected, float width, int pointCount, Action<Frame>? progress)
     {
-        foreach (ElementData element in ExtractElements(pointCount, progress))
+        List<ElementData> elements = ExtractElements(pointCount, progress).ToList();
+        float maxWeight = elements.Max(v => v.weight);
+        foreach (ElementData element in elements)
         {
-            selected.Mutate(v => element.Draw(pen, v));
-            yield return element;
+            float value = element.weight / maxWeight;
+            selected.Mutate(v => element.Draw(new Pen(new Rgba32(0.0f, value, value, value), width), v));
         }
+        return elements;
     }
     public void DrawBorder(Image<Rgba32> selected)
     {
