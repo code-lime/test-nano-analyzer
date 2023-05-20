@@ -183,10 +183,8 @@ public readonly struct ExtremumImage
         }
     }
 
-    private int MoveBox(Random rnd, List<(int px, int py)>[,] values, int radius, Action<Frame>? progress)
+    private void MoveBox(Random rnd, List<(int px, int py)>[,] values, int radius, Action<Frame>? progress)
     {
-        int maxCount = 0;
-
         (int mx, int my)[,] moveValues = new (int mx, int my)[width, height];
 
         int length = POINT_ARRAY.Length;
@@ -254,8 +252,6 @@ public readonly struct ExtremumImage
             values[mx, my].AddRange(list);
             list.Clear();
         }
-
-        return maxCount;
     }
 
     private SortedDictionary<int, int> CalculateSizes(List<(int px, int py)>[,] values, Action<Frame>? progress)
