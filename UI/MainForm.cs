@@ -32,6 +32,7 @@ public partial class MainForm : Form
         };
         if (dialog.ShowDialog() != DialogResult.OK) return;
         string fileName = dialog.FileName;
+        if (!Directory.Exists("cache")) Directory.CreateDirectory("cache");
         ProgressBarForm.StartProgress($"Load {fileName} file...", progress =>
         {
             progress.Invoke(Frame.Of(0, 5, "Read file"));
@@ -40,7 +41,7 @@ public partial class MainForm : Form
             image.Mutate(v => v.Grayscale());
 
             progress.Invoke(Frame.Of(2, 5, "Check cache"));
-            string md5 = image.HashMD5() + ".ext";
+            string md5 = "cache/" + image.HashMD5() + ".ext";
             ExtremumImage extremumImage;
             if (File.Exists(md5))
             {
