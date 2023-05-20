@@ -172,13 +172,45 @@ public readonly struct ExtremumImage
         }
         return elements;
     }
-    public void DrawBorder(Image<Rgba32> selected)
+    public void DrawBorder(Image<Rgba32> selected, bool white = false)
     {
+        Rgba32 BORDER_COLOR = white ? new Rgba32(0.9f, 0.9f, 0.9f) : new Rgba32(0.1f, 0.1f, 0.1f);
+        Rgba32 NORMAL_COLOR = white ? new Rgba32(1f, 1f, 1f) : new Rgba32(0f, 0f, 0f);
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                selected[x, y] = borderMap[x, y] ? new Rgba32(0.1f, 0.1f, 0.1f) : new Rgba32(0, 0, 0);
+                selected[x, y] = borderMap[x, y] ? BORDER_COLOR : NORMAL_COLOR;
+            }
+        }
+    }
+    public void DrawExtremum(Image<Rgba32> selected)
+    {
+        (double min, double max) minMaxX = (double.PositiveInfinity, double.NegativeInfinity);
+        (double min, double max) minMaxY = (double.PositiveInfinity, double.NegativeInfinity);
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                double hXValue = data[x, y].x.value;
+                double hYValue = data[x, y].y.value;
+
+                minMaxX.max = Math.Max(hXValue, minMaxX.max);
+                minMaxX.min = Math.Min(hXValue, minMaxX.min);
+
+                minMaxY.max = Math.Max(hYValue, minMaxY.max);
+                minMaxY.min = Math.Min(hYValue, minMaxY.min);
+            }
+        }
+
+        (double min, double delta) minDeltaX = (minMaxX.min, minMaxX.max - minMaxX.min);
+        (double min, double delta) minDeltaY = (minMaxY.min, minMaxY.max - minMaxY.min);
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                selected[x, y] = data[x, y].ToPixel(minDeltaX, minDeltaY);
             }
         }
     }

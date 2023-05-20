@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using SixLabors.ImageSharp.PixelFormats;
+using System.IO;
 
 namespace NanoAnalyzer.Extremum.Image;
 
@@ -24,5 +25,12 @@ public readonly struct EValue
     {
         x.Write(writer);
         y.Write(writer);
+    }
+
+    public Rgba32 ToPixel((double min, double delta) minDeltaX, (double min, double delta) minDeltaY)
+    {
+        if (x.minimum) return new Rgba32(1f, 1f, 1f);
+        if (y.minimum) return new Rgba32(0f, 0f, 0f);
+        return new Rgba32((float)((x.value - minDeltaX.min) / minDeltaX.delta), (float)((y.value - minDeltaY.min) / minDeltaY.delta), 0);
     }
 }

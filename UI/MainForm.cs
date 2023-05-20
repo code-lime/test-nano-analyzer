@@ -240,7 +240,7 @@ public partial class MainForm : Form
             for (int i = 0; i < PART_COUNT; i++)
                 counts[i] = 0;
             foreach (ElementData value in values)
-            { 
+            {
                 int index = (int)Math.Round(((value.radius - min) / delta) * PART_COUNT);
                 counts.TryGetValue(index, out int count);
                 count += value.weight;
@@ -296,5 +296,28 @@ public partial class MainForm : Form
                 .OrderBy(v => v.Index)
                 .ToCsv();
         });
+    }
+
+    private void debugInfoToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (image is not (Image<Rgba32> original, ExtremumImage extremum))
+        {
+            MessageBox.Show(this, "Image not opened!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        string debugInfoDir = "debug_info";
+        if (Directory.Exists(debugInfoDir)) Directory.Delete(debugInfoDir, true);
+        Directory.CreateDirectory(debugInfoDir);
+
+        original.SaveAsPng(Path.Combine(debugInfoDir, "original.png"));
+
+        using Image<Rgba32> extremumImage = new Image<Rgba32>(extremum.width, extremum.height);
+        extremum.DrawExtremum(extremumImage);
+        extremumImage.SaveAsPng(Path.Combine(debugInfoDir, "extremum.png"));
+
+        using Image<Rgba32> borderImage = new Image<Rgba32>(extremum.width, extremum.height);
+        extremum.DrawBorder(borderImage, true);
+        borderImage.SaveAsPng(Path.Combine(debugInfoDir, "border.png"));
     }
 }

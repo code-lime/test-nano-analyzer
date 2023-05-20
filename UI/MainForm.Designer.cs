@@ -36,8 +36,10 @@
             elementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exportTocsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exportTojsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            showObjectsCountPerUnitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            distributionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportTocsvToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            exportTojsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            debugInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +48,6 @@
             drawElementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             withOriginalImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             withBordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            distributionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            exportTocsvToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            exportTojsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)imageDisplay).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -75,7 +74,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, exportToolStripMenuItem1, showToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, exportToolStripMenuItem1, toolStripSeparator1, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "File";
@@ -89,7 +88,7 @@
             // 
             // exportToolStripMenuItem1
             // 
-            exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { elementsToolStripMenuItem, distributionsToolStripMenuItem });
+            exportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { elementsToolStripMenuItem, distributionsToolStripMenuItem, debugInfoToolStripMenuItem });
             exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
             exportToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             exportToolStripMenuItem1.Text = "Export";
@@ -98,36 +97,50 @@
             // 
             elementsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exportTocsvToolStripMenuItem, exportTojsonToolStripMenuItem });
             elementsToolStripMenuItem.Name = "elementsToolStripMenuItem";
-            elementsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            elementsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             elementsToolStripMenuItem.Text = "Elements";
             // 
             // exportTocsvToolStripMenuItem
             // 
             exportTocsvToolStripMenuItem.Name = "exportTocsvToolStripMenuItem";
-            exportTocsvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exportTocsvToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             exportTocsvToolStripMenuItem.Text = "Export to .csv";
             exportTocsvToolStripMenuItem.Click += exportTocsvToolStripMenuItem_Click;
             // 
             // exportTojsonToolStripMenuItem
             // 
             exportTojsonToolStripMenuItem.Name = "exportTojsonToolStripMenuItem";
-            exportTojsonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exportTojsonToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             exportTojsonToolStripMenuItem.Text = "Export to .json";
             exportTojsonToolStripMenuItem.Click += exportTojsonToolStripMenuItem_Click;
             // 
-            // showToolStripMenuItem
+            // distributionsToolStripMenuItem
             // 
-            showToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { showObjectsCountPerUnitToolStripMenuItem });
-            showToolStripMenuItem.Name = "showToolStripMenuItem";
-            showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            showToolStripMenuItem.Text = "Show";
+            distributionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exportTocsvToolStripMenuItem1, exportTojsonToolStripMenuItem1 });
+            distributionsToolStripMenuItem.Name = "distributionsToolStripMenuItem";
+            distributionsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            distributionsToolStripMenuItem.Text = "Distributions";
             // 
-            // showObjectsCountPerUnitToolStripMenuItem
+            // exportTocsvToolStripMenuItem1
             // 
-            showObjectsCountPerUnitToolStripMenuItem.Name = "showObjectsCountPerUnitToolStripMenuItem";
-            showObjectsCountPerUnitToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            showObjectsCountPerUnitToolStripMenuItem.Text = "Show objects count per unit";
-            showObjectsCountPerUnitToolStripMenuItem.Click += showObjectsCountPerUnitToolStripMenuItem_Click;
+            exportTocsvToolStripMenuItem1.Name = "exportTocsvToolStripMenuItem1";
+            exportTocsvToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            exportTocsvToolStripMenuItem1.Text = "Export to .csv";
+            exportTocsvToolStripMenuItem1.Click += exportTocsvToolStripMenuItem1_Click;
+            // 
+            // exportTojsonToolStripMenuItem1
+            // 
+            exportTojsonToolStripMenuItem1.Name = "exportTojsonToolStripMenuItem1";
+            exportTojsonToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
+            exportTojsonToolStripMenuItem1.Text = "Export to .json";
+            exportTojsonToolStripMenuItem1.Click += exportTojsonToolStripMenuItem1_Click;
+            // 
+            // debugInfoToolStripMenuItem
+            // 
+            debugInfoToolStripMenuItem.Name = "debugInfoToolStripMenuItem";
+            debugInfoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            debugInfoToolStripMenuItem.Text = "Debug info";
+            debugInfoToolStripMenuItem.Click += debugInfoToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -183,27 +196,6 @@
             withBordersToolStripMenuItem.Text = "With borders";
             withBordersToolStripMenuItem.Click += withBordersToolStripMenuItem_Click;
             // 
-            // distributionsToolStripMenuItem
-            // 
-            distributionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exportTocsvToolStripMenuItem1, exportTojsonToolStripMenuItem1 });
-            distributionsToolStripMenuItem.Name = "distributionsToolStripMenuItem";
-            distributionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            distributionsToolStripMenuItem.Text = "Distributions";
-            // 
-            // exportTocsvToolStripMenuItem1
-            // 
-            exportTocsvToolStripMenuItem1.Name = "exportTocsvToolStripMenuItem1";
-            exportTocsvToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            exportTocsvToolStripMenuItem1.Text = "Export to .csv";
-            exportTocsvToolStripMenuItem1.Click += exportTocsvToolStripMenuItem1_Click;
-            // 
-            // exportTojsonToolStripMenuItem1
-            // 
-            exportTojsonToolStripMenuItem1.Name = "exportTojsonToolStripMenuItem1";
-            exportTojsonToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            exportTojsonToolStripMenuItem1.Text = "Export to .json";
-            exportTojsonToolStripMenuItem1.Click += exportTojsonToolStripMenuItem1_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -238,12 +230,11 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exportTojsonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showObjectsCountPerUnitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem elementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportTocsvToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distributionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportTocsvToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportTojsonToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem debugInfoToolStripMenuItem;
     }
 }
